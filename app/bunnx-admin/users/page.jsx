@@ -35,9 +35,9 @@ const User = () => {
 
         <AdminpanelLayout>
 
-            <section className="bg-gray-50 h-full sm:p-10 p-6">
+            <section className="bg-gray-50">
 
-                <h2 className="text-2xl font-semibold my-6 sm:mx-20 text-center sm:text-left">
+                <h2 className="text-2xl font-semibold my-6 sm:mx-20 text-left">
                     All Users
                 </h2>
 

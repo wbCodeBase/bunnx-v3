@@ -124,7 +124,7 @@ function TechIcon({ name, icon }) {
   return (
     <div className="flex flex-col items-center bg-gray-50 px-6 rounded-lg justify-center mx-2">
       <div className="relative w-16 h-16 mb2">
-        <Image src={icon} alt={`${name} icon`} fill={true} style={{ objectFit: "contain" }} />
+        <Image src={icon} alt={`${name} icon`} fill={true} sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: "contain" }} />
       </div>
       {/* <span className="text-sm font-medium text-gray-600">{name}</span> sizes="(max-width: 768px) 100vw, 33vw"*/}
     </div>

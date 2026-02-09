@@ -111,6 +111,7 @@ const ActiveSlugManage = () => {
                             name="label"
                             placeholder="Enter label"
                             value={formState.label}
+                            required
                             onChange={handleInputChange}
                             className="bg-gray-50"
                         />
@@ -121,6 +122,7 @@ const ActiveSlugManage = () => {
                             name="slug"
                             placeholder="Enter slug"
                             value={formState.slug}
+                            required
                             onChange={handleInputChange}
                             className="bg-gray-50"
                         />
@@ -130,6 +132,7 @@ const ActiveSlugManage = () => {
                         <select
                             name="isActive"
                             value={formState.isActive}
+                            required
                             onChange={handleInputChange}
                             className="bg-gray-50 w-full border rounded-md p-2"
                         >
@@ -142,7 +145,7 @@ const ActiveSlugManage = () => {
                     </div>
                     <div>
                         {/* <Button type="submit">{editMode ? "Update" : "Create"}</Button> */}
-                        <Button type="submit">{result.isLoading ? "Saving..." : updateIsLoading ? "Updating..." : editMode ? "Update" : "Submit"}</Button>
+                        <Button className="bg-black text-white cursor-pointer" type="submit">{result.isLoading ? "Saving..." : updateIsLoading ? "Updating..." : editMode ? "Update" : "Submit"}</Button>
                     </div>
                 </form>
 

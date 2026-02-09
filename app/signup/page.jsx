@@ -91,7 +91,7 @@ const SignUp = () => {
                                 placeholder={`Enter your ${field}`}
                                 value={formData[field]}
                                 onChange={handleChange}
-                                className="w-full rounded-lg p-2.5 mt-1 border"
+                                className="w-full rounded-lg p-2.5 mt-1 border bg-white border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                             />
 
                         </div>

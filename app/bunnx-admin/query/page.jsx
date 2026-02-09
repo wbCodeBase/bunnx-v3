@@ -35,13 +35,13 @@ const Query = () => {
 
         <AdminpanelLayout>
 
-            <section className="bg-gray-50 h-full sm:p-10 p-6">
+            <section className="bg-gray-50">
 
-                <h2 className="text-2xl font-semibold my-6 sm:mx-20 text-center sm:text-left">
+                <h2 className="text-2xl font-semibold my-6 sm:mx-20 text-left">
                     User Queries
                 </h2>
 
-                <div className="container mx-auto grid gap-6 sm:w-11/12 w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="container mx-auto grid gap-6 sm:w-11/12 w-full grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
                     {userQuery && userQuery.map((query, i) => (
                         <div key={i} className="border rounded-xl p-5 bg-white text-gray-600 shadow-sm hover:shadow-lg transition-shadow">
                             <div><span className="text-sm font-semibold">Name:</span> {query.name}</div>
