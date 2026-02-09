@@ -1,0 +1,18 @@
+User-agent: *
+Disallow: /actions/ 
+Disallow: /bunnx-admin/ 
+Disallow: /hire/ 
+Disallow: /blog/ 
+Disallow: /industry/ 
+Disallow: /hooks/ 
+Disallow: /lib/ 
+Disallow: /login/ 
+Disallow: /signup/
+
+# Sitemap URL
+Sitemap: https://www.bunnx.com/sitemap.xml
+
+
+
+
+

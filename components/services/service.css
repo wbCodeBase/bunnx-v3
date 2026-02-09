@@ -1,0 +1,47 @@
+.writing-mode-vertical {
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
+@keyframes verticalBounceRight {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px); /* Adjust this value for bounce height */
+  }
+}
+
+@keyframes verticalBounceLeft {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-10px); /* Adjust this value for bounce height */
+  }
+}
+
+/* Applying the bounce animation */
+.verticalBounceRight {
+  animation: verticalBounceRight 1s ease-in-out infinite;
+}
+.verticalBounceLeft {
+  animation: verticalBounceLeft 1s ease-in-out infinite;
+}
+
+
+
+
+.our-process-box::before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-image: url("/pattern-footer.png");
+  content: "";
+  z-index: 1;
+  opacity: 0.5;
+  border-top-right-radius: 6px;
+}
