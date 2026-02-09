@@ -98,7 +98,7 @@ export default async function RootLayout({ children }) {
             __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
           }}
         />
-      </head>
+      </head> 
 
 
       <body className={` ${quando.variable} ${arOneSans.variable} antialiased`}>
