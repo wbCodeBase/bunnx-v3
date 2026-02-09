@@ -16,8 +16,8 @@ export const sendLeadNotification = async (leadData) => {
   try {
     const mailOptions = {
       from: process.env.EMAIL,
-      to: "kashyapking654321@gmail.com",
-      // to: "whitebunniewebleads@gmail.com",
+      // to: "kashyapking654321@gmail.com",
+      to: "whitebunniewebleads@gmail.com",
       subject: "New Lead Notification from Bunnx Website",
       html: `
         <h1>Bunnx Lead Details</h1>
