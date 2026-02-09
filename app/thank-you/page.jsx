@@ -53,7 +53,7 @@ export default function ThankYouPage() {
             </Link>
             
             <Link 
-              href="javascript:history.back()"
+              href="/"
               className="flex items-center justify-center gap-2 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 py-3 px-6 rounded-lg transition-all duration-300"
             >
               <ArrowLeft className="h-5 w-5" />

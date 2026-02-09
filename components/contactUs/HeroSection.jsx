@@ -126,7 +126,7 @@ const HeroSection = () => {
                                                 placeholder={`Enter your ${field}`}
                                                 value={formData[field]}
                                                 onChange={handleChange}
-                                                className="w-full rounded-lg p-2.5 px-4 mt-1"
+                                                className="w-full rounded-lg p-2.5 px-4 mt-1 bg-white"
                                             />
                                         ) : (
                                             <input
@@ -135,7 +135,7 @@ const HeroSection = () => {
                                                 placeholder={`Enter your ${field}`}
                                                 value={formData[field]}
                                                 onChange={handleChange}
-                                                className="w-full rounded-lg p-2.5 px-4 mt-1"
+                                                className="w-full rounded-lg p-2.5 px-4 mt-1 bg-white"
                                             />
                                         )}
                                     </div>

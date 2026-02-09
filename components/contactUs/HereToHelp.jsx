@@ -30,7 +30,7 @@ const HereToHelp = () => {
     return (
         <>
 
-            <section className="border-t container mx-auto max-w-screen-lg xl:max-w-screen-xl px-4 md:px-6 py-10">
+            <section className="border-t border-gray-300 container mx-auto max-w-screen-lg xl:max-w-screen-xl px-4 md:px-6 py-10">
 
                 <h2 className='font-semibold text-orange-500 text-lg'>We’re here to help</h2>
                 <h4 className='font-semibold text-3xl my-2'>Solutions and Support, When You Need Them Most</h4>

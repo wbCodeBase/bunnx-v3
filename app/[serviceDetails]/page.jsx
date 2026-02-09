@@ -54,7 +54,8 @@ const companyInfo = {
 
 export async function generateMetadata({ params }) {
   // read route params
-  const currentSlug = await params.serviceDetails
+  const resolvedParams = await params;
+  const currentSlug = resolvedParams.serviceDetails
   const meta = metaData[currentSlug] || null;
 
   if (!meta) {

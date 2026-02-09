@@ -140,7 +140,7 @@ export default function ContactSidebar() {
                                         placeholder={field.label}
                                         value={formData[field.id]}
                                         onChange={handleChange}
-                                        className="w-full rounded-lg p-2.5 px-4 text-sm"
+                                        className="w-full rounded-lg p-2.5 px-4 text-sm bg-white"
                                         rows={4}
                                     />
                                 ) : (
@@ -150,7 +150,7 @@ export default function ContactSidebar() {
                                         placeholder={field.label}
                                         value={formData[field.id]}
                                         onChange={handleChange}
-                                        className="w-full rounded-lg p-2.5 px-4 text-sm"
+                                        className="w-full rounded-lg p-2.5 px-4 text-sm bg-white"
                                     />
                                 )}
                             </div>
@@ -174,7 +174,7 @@ export default function ContactSidebar() {
 
             {/* Overlay when sidebar is open */}
             {isOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 z-40" onClick={toggleSidebar} aria-hidden="true" />
+                <div className="fixed inset-0 bg-black/50 z-40" onClick={toggleSidebar} aria-hidden="true" />
             )}
 
 
