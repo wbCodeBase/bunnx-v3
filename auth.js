@@ -122,7 +122,7 @@ import { compare } from 'bcryptjs'
 
 export const {
   handlers,
-  auth,
+  auth, 
   signIn,
   signOut 
 } = NextAuth({
