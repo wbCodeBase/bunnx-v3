@@ -1,104 +1,168 @@
 "use client"
 
-import React from "react";
-import Image from "next/image";
 
 import { IoReader } from "react-icons/io5";
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
-import { formatDate } from "@/lib/blogs"
+import { Search } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+
+import { useState, useRef } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 
-export const HeroSectionBlog = ({ latestBlog }) => {
+async function fetchCategories() {
+  const res = await fetch('/api/categories');
+  if (!res.ok) throw new Error('Failed to fetch categories');
+  const result = await res.json();
+  return result.data || [];
+}
 
-  const heroSectionData = {
-    title: latestBlog?.title,
-    description: latestBlog?.excerpt,
-    imageUrl: latestBlog.featuredImage.node.mediaDetails.sizes[0].sourceUrl,
-    ctaTextPri: "Read more",
-    categories: latestBlog?.categories?.nodes,
-    readMoreBtnUrl: `/blog/${latestBlog?.slug}`,
-    authorAvatar: latestBlog?.featuredImage?.node?.author?.node?.avatar?.url,
-    authorName: latestBlog?.featuredImage?.node?.author?.node?.name
+
+export const HeroSectionBlog = () => {
+
+  const [search, setSearch] = useState('');
+  const [searchInput, setSearchInput] = useState('');
+
+  const { data: categoriesData } = useQuery({
+    queryKey: ['categories'],
+    queryFn: fetchCategories,
+  });
+
+  const categories = categoriesData || [];
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearch(searchInput);
+    setPage(1);
   };
 
-  const { title, description, imageUrl, ctaTextPri, categories, readMoreBtnUrl, authorName, authorAvatar } = heroSectionData;
 
-  if (!latestBlog) {
-    return <p>Loading...</p>;
-  }
+
+
+  // In your component:
+  const scrollContainerRef = useRef(null);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(true);
+
+  const scroll = (direction) => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      const scrollAmount = 200;
+      container.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const handleScroll = () => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      setShowLeftArrow(container.scrollLeft > 0);
+      setShowRightArrow(
+        container.scrollLeft < container.scrollWidth - container.clientWidth - 1
+      );
+    }
+  };
+
+
+
 
   return (
     <>
-      <section className="bg-black text-white">
+      <section className="bg-black">
         <div className="flex justify-center flex-wrap container mx-auto sm:w-11/12 w-full lg:p-10">
 
-          <div className="sm:mt12 w-full lg:w-[41%] py-6 px-4 flex justify-center gap-20 flex-col sm:pt-18">
-            <div>
-              <span className="text-orange-400 font-medium text-lg">Latest</span>
-              <h1 className="lg:text-4xl text-3xl my-2 font-semibold">{title}</h1>
-
-              {/* <div className={`text-gray-700 ${post.title.length > 32 ? "line-clamp-2" : "line-clamp-3" }`} dangerouslySetInnerHTML={{ __html: post.excerpt }}></div> */}
-              <div
-                className="text-gray-300 text-lg my-4 font-medium"
-                dangerouslySetInnerHTML={{ __html: description || "" }}
-              />
-
-              <div className="my-4">
-                {categories.map((category) => (
-                  <button key={category.name} className="flex items-center justify-center sm:justify-start">
-                    <Link href={`/blog/cat/${category.slug}`} className='flex items-center justify-center p-1 font-medium text-md border border-orange-400 rounded-full text-orange-400'>
-                      <span className="px-2"> {category.name} </span>
-                    </Link>
-                  </button>
-                ))}
-              </div>
-
-              <div className="flex mt-8 gap-10">
-                <div className="flex items-center gap-4">
-                  <div>
+          <div className="sm:mt12 w-full py-6 px-4 flex justify-center gap-20 flex-col sm:pt-18">
+            <div className="text-center">
+              <h1 className="lg:text-6xl text-4xl my-4 font-semibold text-white">All Blogs</h1>
+              <p className="text-gray-300 lg:text-2xl text-xl my-4 font-medium">Your Trusted Source For Software Development Wisdom</p>
+              <p className="lg:text-lg text-gray-300 text-lg my-4 font-medium">Get expert guidance and real-world tips from industry leaders, making your journey through the world of software development smoother, smarter, and more rewarding.</p>
 
 
-                    <div className="relative w-10 h-10 rounded-full border border-gray-500 overflow-hidden">
-                      <Image
-                        src={authorAvatar}
-                        alt={authorName}
-                        width={30}
-                        height={30}
-                        className="object-cover w-10 h-auto"
-                      />
-                    </div>
+              <div className="flex md:flex-nowrap flex-wrap gap-8 justify-around items-center mt-16 py-6">
 
+                {/* Search */}
+                <form className="flex gap-3 max-w-md w-full">
+                  <div className="relative flex-1">
+                    <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
+                    <input
+                      type="text"
+                      value={searchInput}
+                      onChange={e => setSearchInput(e.target.value)}
+                      placeholder="Search stories..."
+                      className="text-black w-full pl-11 pr-4 py-3.5 rounded-full bg-white text-md placeholder-gray-500 focus:outline-none focus:ring-1 transition"
+
+                    />
                   </div>
-                  <div className="flex flex-col gap-1">
-                    <span className="font-medium">{authorName}</span>
-                    <span className="text-gray-300 text-xs">{formatDate(latestBlog.date)}</span>
+                </form>
+
+
+                {/* <div className="flex gap-2 overflow-x-auto pb-1 lg:w-1/2 w-full">
+
+                  {categories.map((c) => {
+                    return (
+                      <Link href={`/blog/cat/${c?.slug}`} key={c?.slug}
+                        className="shrink-0 px-5 py-2 rounded-full text-md hover:bg-orange-500 font-medium border cursor-pointer">
+                        {c.name}
+                      </Link>
+                    );
+                  })}
+                </div> */}
+
+                <div className="relative lg:w-1/2 w-full">
+                  {/* Left Arrow */}
+                  {showLeftArrow && (
+                    <button
+                      onClick={() => scroll('left')}
+                      className="absolute cursor-pointer left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-2 hover:bg-gray-100"
+                      aria-label="Scroll left"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                  )}
+
+                  {/* Categories Container */}
+                  <div
+                    ref={scrollContainerRef}
+                    onScroll={handleScroll}
+                    className="flex gap-2 overflow-x-auto pb-1 max-w-xl mx-auto scrollbar-hide"
+                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                  >
+                    {categories.map((c) => {
+                      return (
+                        <Link
+                          href={`/blog/cat/${c?.slug}`}
+                          key={c?.slug}
+                          className="shrink-0 px-5 py-2 rounded-full bg-gray-600 text-white text-md hover:bg-orange-500 font-medium border cursor-pointer"
+                        >
+                          {c.name}
+                        </Link>
+                      );
+                    })}
                   </div>
+
+                  {/* Right Arrow */}
+                  {showRightArrow && (
+                    <button
+                      onClick={() => scroll('right')}
+                      className="absolute cursor-pointer right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-2 hover:bg-gray-100"
+                      aria-label="Scroll right"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  )}
                 </div>
 
-                <button className="flex items-center justify-center sm:justify-start ">
-                  <Link href={readMoreBtnUrl} className='flex items-center justify-center mt-2 p-1 hover:bg-orange-500 font-medium text-md border border-white rounded-full text-white'>
-                    <span className='bg-white rounded-full p-2 text-black'> <IoReader /> </span>
-                    <span className="px-2"> {ctaTextPri} </span>
-                  </Link>
-                </button>
               </div>
+
 
             </div>
           </div>
 
-          <div className="md:w-[55%] w-full flex sm:p-10 p-4 items-center justify-center">
-            <Image
-              src={imageUrl}
-              alt="Blog Image"
-              width={600} // Provide width
-              height={800} // Provide height
-              className="lg:max-w-lg h-auto borde border-white rounded-3xl"
-            />
-
-          </div>
 
         </div>
       </section>

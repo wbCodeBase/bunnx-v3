@@ -13,7 +13,7 @@ export async function proxy(request) {
 
     const token = await getToken({
       req: request, secret: process.env.NEXTAUTH_SECRET,
-      secureCookie: true
+      // secureCookie: true
     });
     
     // console.log("Token exists:", token, process.env.NEXTAUTH_SECRET);

@@ -68,6 +68,12 @@ const sidebarSections: SidebarSection[] = [
         feature: 'manage_blogs',
       },
       {
+        name: 'Categories',
+        href: '/bunnx-admin/categories',
+        icon: Newspaper,
+        feature: 'manage_news',
+      },
+      {
         name: 'Manage Slugs',
         href: '/bunnx-admin/manage-slug',
         icon: Newspaper,

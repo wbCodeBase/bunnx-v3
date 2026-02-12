@@ -1,8 +1,10 @@
 "use client"
 
+import { Calendar } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { formatDate } from "@/lib/blogs"
+import { IoReader } from "react-icons/io5";
+
 // import { IoReader } from "react-icons/io5";
 
 
@@ -11,12 +13,12 @@ export default function HeroSectionBlogDetail({ dedicatedBlogPost: latestBlog })
     const heroSectionData = {
         title: latestBlog?.title,
         description: latestBlog?.excerpt,
-        imageUrl: latestBlog?.featuredImage?.node?.mediaDetails?.sizes[0]?.sourceUrl,
+        imageUrl: latestBlog?.featuredImage?.url,
         ctaTextPri: "Read more",
-        categories: latestBlog?.categories?.nodes,
+        categories: latestBlog?.categories,
         readMoreBtnUrl: `/blog/${latestBlog?.slug}`,
-        authorName: latestBlog?.author?.node?.name,
-        authorAvatar: latestBlog?.author?.node?.avatar?.url
+        // authorAvatar: latestBlog?.featuredImage?.node?.author?.node?.avatar?.url,
+        authorName: latestBlog?.author?.name
     };
 
     const { title, description, imageUrl, ctaTextPri, categories, readMoreBtnUrl, authorAvatar, authorName } = heroSectionData;
@@ -24,19 +26,21 @@ export default function HeroSectionBlogDetail({ dedicatedBlogPost: latestBlog })
     return (
         <>
             <section className="bg-black text-white">
-                <div className="flex justify-center flex-wrap container mx-auto sm:w-11/12 w-full lg:p-10">
+                <div className="flex justify-center flex-wrap container mx-auto sm:w-11/12 w-full lg:py-10">
 
-                    <div className="sm:mt12 w-full lg:w-[41%] py-6 px-4 flex justify-center gap-20 flex-col sm:pt-18">
+                    <div className="sm:mt12 w-full lg:w-[41%] py-6 px-4 flex justify-center gap-20 flex-col">
                         <div>
+                            {/* <span className="text-orange-400 font-medium text-lg">Latest</span> */}
                             <h1 className="lg:text-4xl text-3xl my-2 font-semibold">{title}</h1>
 
-                            <div className="text-gray-300 text-lg my-4 font-medium" dangerouslySetInnerHTML={{ __html: description || "" }} />
+                            <div
+                                className="text-gray-300 text-lg my-4 font-medium">{description}</div>
 
-                            <div className="my-4">
+                            <div className="my-4 mt-6">
                                 {categories.map((category) => (
-                                    <button key={category.slug} className="flex items-center justify-center sm:justify-start">
-                                        <Link href={`/blog/cat/${category.slug}`} className='flex items-center justify-center p-1 font-medium text-md border border-orange-400 rounded-full text-orange-400'>
-                                            <span className="px-2"> {category.name} </span>
+                                    <button key={category.name} className="flex items-center justify-center sm:justify-start">
+                                        <Link href={`/blog/cat/${category?.slug}`} className='flex items-center justify-center p-1 font-medium text-md border border-orange-400 rounded-full text-orange-400'>
+                                            <span className="px-2"> {category.slug} </span>
                                         </Link>
                                     </button>
                                 ))}
@@ -46,21 +50,27 @@ export default function HeroSectionBlogDetail({ dedicatedBlogPost: latestBlog })
                                 <div className="flex items-center gap-4">
                                     <div>
 
-
-                                        <div className="relative w-10 h-10 rounded-full border border-gray-500 overflow-hidden">
-                                            <Image
-                                                src={authorAvatar}
-                                                alt={authorName}
-                                                width={30}
-                                                height={30}
-                                                className="object-cover w-10 h-auto"
-                                            />
-                                        </div>
+                                        {/* 
+                    <div className="relative w-10 h-10 rounded-full border border-gray-500 overflow-hidden">
+                      <Image
+                        src={authorAvatar}
+                        alt={authorName}
+                        width={30}
+                        height={30}
+                        className="object-cover w-10 h-auto"
+                      />
+                    </div> */}
 
                                     </div>
                                     <div className="flex flex-col gap-1">
                                         <span className="font-medium">{authorName}</span>
-                                        <span className="text-gray-300 text-xs italic">Published on {formatDate(latestBlog.date)}</span>
+                                        {/* <span className="text-gray-300 text-xs">{latestBlog.createdAt}</span> */}
+
+                                        <span className="flex items-center gap-1.5">
+                                            <Calendar size={13} />
+                                            {new Date(latestBlog.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                                        </span>
+
                                     </div>
                                 </div>
 

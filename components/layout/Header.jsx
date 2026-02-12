@@ -19,6 +19,7 @@ const menuItems = [
   // { title: 'Hire', slug: '/hire/node-developer', hasSubmenu: true },
   { title: 'About Us', slug: '/about-us', hasSubmenu: false },
   { title: 'Contact Us', slug: '/contact-us', hasSubmenu: false },
+  { title: 'Blog', slug: '/blog', hasSubmenu: false },
 ]
 
 
