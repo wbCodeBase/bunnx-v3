@@ -28,7 +28,7 @@ export default function FeaturedSection({ latestBlog }) {
   return (
     <>
       <section className="lg:py-16">
-        <div className="bg-orange-500 flex justify-center flex-wrap container mx-auto sm:w-11/12 w-full lg:py-6 rounded-2xl">
+        <div className="bg-orange-500 flex justify-center flex-wrap container mx-auto sm:w-11/12 w-full lg:py-6 md:rounded-2xl">
 
           <div className="w-full lg:w-[41%] py-6 px-4 flex justify-center gap-20 flex-col">
             <div>
@@ -41,27 +41,23 @@ export default function FeaturedSection({ latestBlog }) {
               <div className="my-4 mt-6">
                 {categories.map((category) => (
                   <button key={category.name} className="flex items-center justify-center sm:justify-start">
-                    <Link href={`/blog/cat/${category?.slug}`} className='flex items-center justify-center p-1 font-medium text-md border border-white rounded-full text-white'>
+                    <Link href={`/blog/cat/${category?.slug}`} className='flex items-center justify-center p-1 font-medium text-md border border-white bg-white rounded-full text-orange-500'>
                       <span className="px-2"> {category.slug} </span>
                     </Link>
                   </button>
                 ))}
               </div>
 
-              <div className="flex mt-8 gap-10">
-                <div className="flex items-center gap-4">
-                  <div>
+              <div className="flex flex-wrap mt-8 md:mt-5 md:gap-10 items-center justify-start gap-8">
+                
+                <div className="flex flex-col gap-1 text-white">
+                  <span className="font-medium">{authorName}</span>
 
-                  </div>
-                  <div className="flex flex-col gap-1 text-white">
-                    <span className="font-medium">{authorName}</span>
+                  <span className="flex items-center justify-between gap-1.5">
+                    <Calendar size={13} />
+                    {new Date(latestBlog.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                  </span>
 
-                    <span className="flex items-center gap-1.5">
-                      <Calendar size={13} />
-                      {new Date(latestBlog.publishedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-                    </span>
-
-                  </div>
                 </div>
 
                 <button className="flex items-center justify-center sm:justify-start ">

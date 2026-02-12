@@ -144,9 +144,11 @@ export async function GET(request) {
     const category = searchParams.get('category');
     const search = searchParams.get('search');
 
+
+
     const query = {};
 
-    if (status !== 'all') { 
+    if (status !== 'all') {
       query.status = status;
     }
 
@@ -162,7 +164,11 @@ export async function GET(request) {
       ];
     }
 
+
+
     const skip = (page - 1) * limit;
+
+
 
     const [blogs, total] = await Promise.all([
       Blog.find(query)
@@ -173,6 +179,8 @@ export async function GET(request) {
         .exec(),
       Blog.countDocuments(query).exec(),
     ]);
+
+
 
     return NextResponse.json({
       success: true,

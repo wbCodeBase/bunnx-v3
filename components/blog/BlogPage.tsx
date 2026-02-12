@@ -14,7 +14,7 @@ async function fetchBlogs(page: number) {
   const params = new URLSearchParams({
     status: 'published',
     page: page.toString(),
-    limit: '9',
+    limit: '2',
   });
   const res = await fetch(`/api/blogs?${params}`);
   if (!res.ok) throw new Error('Failed to fetch');
@@ -26,7 +26,6 @@ async function fetchBlogs(page: number) {
 export default function BlogPage() {
 
   const [page, setPage] = useState(1);
-
 
 
   const { data, isLoading } = useQuery({
@@ -55,7 +54,7 @@ export default function BlogPage() {
     <>
 
       <HeroSectionBlog />
-      
+
 
       <FeaturedSection latestBlog={blogs[0]} />
 

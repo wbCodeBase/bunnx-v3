@@ -33,8 +33,8 @@ export async function generateMetadata({ params }) {
   const currentSlug = `/blog/${paramsSlug.slug}`;
 
   return {
-    title: `${blog?.title} | BunnX`,
-    description: extractCleanText(blog?.excerpt),
+    title: `${blog?.seo?.metaTitle} | BunnX`,
+    description: extractCleanText(blog?.seo?.metaDescription),
     robots: "noindex",
     alternates: {
       canonical: currentSlug,

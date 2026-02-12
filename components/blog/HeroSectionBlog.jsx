@@ -6,8 +6,9 @@ import { IoReader } from "react-icons/io5";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
-import { Search } from "lucide-react";
+// import { Search } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
+import BlogSearch from "@/components/blog/BlogSearch"
 
 import { useState, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -21,10 +22,9 @@ async function fetchCategories() {
 }
 
 
+
 export const HeroSectionBlog = () => {
 
-  const [search, setSearch] = useState('');
-  const [searchInput, setSearchInput] = useState('');
 
   const { data: categoriesData } = useQuery({
     queryKey: ['categories'],
@@ -32,14 +32,6 @@ export const HeroSectionBlog = () => {
   });
 
   const categories = categoriesData || [];
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setSearch(searchInput);
-    setPage(1);
-  };
-
-
 
 
   // In your component:
@@ -85,8 +77,9 @@ export const HeroSectionBlog = () => {
 
               <div className="flex md:flex-nowrap flex-wrap gap-8 justify-around items-center mt-16 py-6">
 
+
                 {/* Search */}
-                <form className="flex gap-3 max-w-md w-full">
+                {/* <form className="flex gap-3 max-w-md w-full">
                   <div className="relative flex-1">
                     <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
                     <input
@@ -95,23 +88,13 @@ export const HeroSectionBlog = () => {
                       onChange={e => setSearchInput(e.target.value)}
                       placeholder="Search stories..."
                       className="text-black w-full pl-11 pr-4 py-3.5 rounded-full bg-white text-md placeholder-gray-500 focus:outline-none focus:ring-1 transition"
-
                     />
                   </div>
-                </form>
+                </form> */}
+
+                <BlogSearch />
 
 
-                {/* <div className="flex gap-2 overflow-x-auto pb-1 lg:w-1/2 w-full">
-
-                  {categories.map((c) => {
-                    return (
-                      <Link href={`/blog/cat/${c?.slug}`} key={c?.slug}
-                        className="shrink-0 px-5 py-2 rounded-full text-md hover:bg-orange-500 font-medium border cursor-pointer">
-                        {c.name}
-                      </Link>
-                    );
-                  })}
-                </div> */}
 
                 <div className="relative lg:w-1/2 w-full">
                   {/* Left Arrow */}
