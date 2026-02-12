@@ -10,8 +10,8 @@ async function getCategoryData(slug: string) {
 
   const [catRes, blogsRes] = await Promise.all([
     // fetch(`${base}/api/categories/slug/deep-tech`, { next: { revalidate: 3600 } }),
-    fetch(`${base}/api/categories/slug/${slug}`, { next: { revalidate: 3600 } }),
-    fetch(`${base}/api/blogs/category/${slug}`, { next: { revalidate: 300 } }),
+    fetch(`${base}/categories/slug/${slug}`, { next: { revalidate: 3600 } }),
+    fetch(`${base}/blogs/category/${slug}`, { next: { revalidate: 300 } }),
   ]);
   // console.log();
   

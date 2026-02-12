@@ -18,7 +18,7 @@ export function extractCleanText(html) {
 
 async function getBlog(slug: string) {
   const base = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000';
-  const res = await fetch(`${base}/api/blogs/slug/${slug}`, { next: { revalidate: 300 } });
+  const res = await fetch(`${base}/blogs/slug/${slug}`, { next: { revalidate: 300 } });
   if (!res.ok) return null;
   const result = await res.json();
   return result.data;

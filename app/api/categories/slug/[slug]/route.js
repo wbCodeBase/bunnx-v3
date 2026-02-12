@@ -11,6 +11,9 @@ export async function GET(
 
     const slugParams = await params;
 
+    console.log(slugParams, "slugParams");
+    
+
     const category = await Category.findOne({ slug: slugParams.slug }).lean();
 
     if (!category) {
