@@ -1,10 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import connectToDatabase from '@/lib/database';
 import Category from '@/models/Category';
 
 export async function GET(
-  req: NextRequest,
-  { params }: { params: Promise<{ slug: string }> } // ✅ Changed to Promise
+  req,
+  { params } // ✅ Changed to Promise
 ) {
   try {
     await connectToDatabase();
@@ -21,7 +21,7 @@ export async function GET(
     }
 
     return NextResponse.json({ success: true, data: category });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error fetching category by slug:', error);
     return NextResponse.json(
       { success: false, error: error.message },

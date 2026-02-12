@@ -1,8 +1,7 @@
 // app/(public)/blogs/category/[slug]/page.tsx
 import { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
-import { Clock, Eye, ArrowRight, ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { BlogCard } from '@/components/blog/BlogCard';
 
 async function getCategoryData(slug: string) {
@@ -13,7 +12,6 @@ async function getCategoryData(slug: string) {
     // fetch(`${base}/api/categories/slug/deep-tech`, { next: { revalidate: 3600 } }),
     fetch(`${base}/api/categories/slug/${slug}`, { next: { revalidate: 3600 } }),
     fetch(`${base}/api/blogs/category/${slug}`, { next: { revalidate: 300 } }),
-    // fetch(`${base}/api/blogs?status=published&category=${slug}&limit=12`, { next: { revalidate: 300 } }),
   ]);
   // console.log();
   

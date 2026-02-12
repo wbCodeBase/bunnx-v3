@@ -1,11 +1,11 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import Blog from '@/models/Blog'
 import Category from '@/models/Category'
 import connectToDatabase from '@/lib/database'
 
 export async function GET(
-  req: NextRequest,
-  { params }: { params: Promise<{ slug: string }> } // ✅ Changed to Promise
+  req,
+  { params } // ✅ Changed to Promise
 ) {
   try {
     await connectToDatabase()

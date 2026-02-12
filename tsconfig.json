@@ -32,6 +32,6 @@
     "**/*.ts",
     "**/*.tsx",
     "app/not-found.jsx"
-  ],
+, "app/api/categories/slug/[slug]/route.js", "app/api/blogs/category/[slug]/route.js"  ],
   "exclude": ["node_modules"]
 }
