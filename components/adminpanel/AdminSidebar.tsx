@@ -188,7 +188,7 @@ export default function AdminSidebar({ role = 'admin' }: { role: string }) {
           <div className="p-4 border-b border-gray-800">
             <div className="flex items-center gap-3">
               <div className="relative">
-                <Image
+                <img
                   src="https://github.com/shadcn.png"
                   alt={user?.name || 'User'}
                   width={40}

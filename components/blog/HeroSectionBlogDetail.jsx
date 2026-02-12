@@ -17,11 +17,10 @@ export default function HeroSectionBlogDetail({ dedicatedBlogPost: latestBlog })
         ctaTextPri: "Read more",
         categories: latestBlog?.categories,
         readMoreBtnUrl: `/blog/${latestBlog?.slug}`,
-        // authorAvatar: latestBlog?.featuredImage?.node?.author?.node?.avatar?.url,
         authorName: latestBlog?.author?.name
     };
 
-    const { title, description, imageUrl, ctaTextPri, categories, readMoreBtnUrl, authorAvatar, authorName } = heroSectionData;
+    const { title, description, imageUrl,  categories, authorName } = heroSectionData;
 
     return (
         <>
@@ -33,8 +32,7 @@ export default function HeroSectionBlogDetail({ dedicatedBlogPost: latestBlog })
                             {/* <span className="text-orange-400 font-medium text-lg">Latest</span> */}
                             <h1 className="lg:text-4xl text-3xl my-2 font-semibold">{title}</h1>
 
-                            <div
-                                className="text-gray-300 text-lg my-4 font-medium">{description}</div>
+                            {/* <div className="text-gray-300 text-lg my-4 font-medium">{description}</div> */}
 
                             <div className="my-4 mt-6">
                                 {categories.map((category) => (

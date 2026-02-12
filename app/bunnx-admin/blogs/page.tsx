@@ -251,9 +251,9 @@ export default function BlogsPage() {
           </div>
         ) : (
           <>
-            <div className="bg-white rounded-lg border shadow-sm overflow-hidden">
+            <div className="bg-white rounded-lg border border-gray-300 shadow-sm overflow-hidden">
               <table className="w-full">
-                <thead className="bg-gray-50 border-b text-xs text-gray-500 uppercase">
+                <thead className="bg-gray-50 border-b border-gray-300 text-xs text-gray-500 uppercase">
                   <tr>
                     <th className="px-6 py-3 text-left font-medium">Blog</th>
                     <th className="px-6 py-3 text-left font-medium">Status</th>
@@ -262,15 +262,15 @@ export default function BlogsPage() {
                     <th className="px-6 py-3 text-right font-medium">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y">
+                <tbody className="divide-y border-gray-300">
                   {data?.data?.blogs?.map((blog: Blog) => (
-                    <tr key={blog._id} className="hover:bg-gray-50">
+                    <tr key={blog._id} className="hover:bg-gray-50 border-gray-300">
                       <td className="px-6 py-4">
                         <div className="flex gap-4">
                           <Image
                             src={blog.featuredImage.url}
                             alt={blog.featuredImage.alt}
-                            width={80}
+                            width={120}
                             height={60}
                             className="rounded-lg border object-cover"
                           />
@@ -343,7 +343,7 @@ export default function BlogsPage() {
 
             {/* Pagination */}
             {data?.data?.pagination && (
-              <div className="flex items-center justify-between bg-white rounded-lg border shadow-sm px-6 py-4">
+              <div className="flex items-center justify-between bg-white rounded-lg border shadow-sm px-6 py-4 border-gray-300">
                 <p className="text-sm text-gray-600">
                   Showing {(page - 1) * 10 + 1} to{' '}
                   {Math.min(page * 10, data.data.pagination.total)} of{' '}
@@ -353,7 +353,7 @@ export default function BlogsPage() {
                   <button
                     onClick={() => setPage((p) => Math.max(1, p - 1))}
                     disabled={page === 1}
-                    className="px-4 py-2 border rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-4 py-2 border border-gray-600 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Previous
                   </button>
@@ -363,7 +363,7 @@ export default function BlogsPage() {
                   <button
                     onClick={() => setPage((p) => p + 1)}
                     disabled={page >= data.data.pagination.pages}
-                    className="px-4 py-2 border rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-4 py-2 border border-gray-600 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Next
                   </button>

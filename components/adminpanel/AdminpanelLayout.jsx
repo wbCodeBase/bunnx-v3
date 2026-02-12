@@ -17,13 +17,7 @@ const AdminpanelLayout = ({ children }) => {
   // Render layout for admin or superadmin
   return (
     <>
-      {/* <SidebarProvider>
-        <AppSidebar />
-        <main className="w-full">
-          <SidebarTrigger />
-          {children}
-        </main>
-      </SidebarProvider> */}
+     
 
 
       <div className="flex h-screen">

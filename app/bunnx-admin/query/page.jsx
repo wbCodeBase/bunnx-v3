@@ -43,7 +43,7 @@ const Query = () => {
 
                 <div className="container mx-auto grid gap-6 sm:w-11/12 w-full grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
                     {userQuery && userQuery.map((query, i) => (
-                        <div key={i} className="border rounded-xl p-5 bg-white text-gray-600 shadow-sm hover:shadow-lg transition-shadow">
+                        <div key={i} className="border border-gray-300 rounded-xl p-5 bg-white text-gray-600 shadow-sm hover:shadow-lg transition-shadow">
                             <div><span className="text-sm font-semibold">Name:</span> {query.name}</div>
                             <div><span className="text-sm font-semibold">Phone:</span> {query.phone}</div>
                             <div><span className="text-sm font-semibold">Email:</span> {query.email}</div>
