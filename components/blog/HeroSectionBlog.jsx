@@ -22,7 +22,6 @@ async function fetchCategories() {
 }
 
 
-
 export const HeroSectionBlog = () => {
 
 
@@ -78,19 +77,6 @@ export const HeroSectionBlog = () => {
               <div className="flex md:flex-nowrap flex-wrap gap-8 justify-around items-center mt-16 py-6">
 
 
-                {/* Search */}
-                {/* <form className="flex gap-3 max-w-md w-full">
-                  <div className="relative flex-1">
-                    <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
-                    <input
-                      type="text"
-                      value={searchInput}
-                      onChange={e => setSearchInput(e.target.value)}
-                      placeholder="Search stories..."
-                      className="text-black w-full pl-11 pr-4 py-3.5 rounded-full bg-white text-md placeholder-gray-500 focus:outline-none focus:ring-1 transition"
-                    />
-                  </div>
-                </form> */}
 
                 <BlogSearch />
 
@@ -139,6 +125,7 @@ export const HeroSectionBlog = () => {
                     </button>
                   )}
                 </div>
+
 
               </div>
 

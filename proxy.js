@@ -10,7 +10,7 @@ export async function proxy(request) {
     const isAuthPage = request.nextUrl.pathname.startsWith('/login') ||
       request.nextUrl.pathname.startsWith('/signup');
     const isAdminPage = request.nextUrl.pathname.startsWith('/bunnx-admin');
-
+ 
     const token = await getToken({
       req: request, secret: process.env.NEXTAUTH_SECRET,
       secureCookie: true

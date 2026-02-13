@@ -84,9 +84,9 @@ export default function BlogSearch() {
                             <div className="py-2">
                                 {searchResults.map((blog) => (
                                     <button
-                                        key={blog.id}
+                                        key={blog._id}
                                         onClick={() => handleResultClick(blog)}
-                                        className="w-full px-4 py-3 hover:bg-gray-50 transition flex items-center gap-3 text-left"
+                                        className="w-full px-4 py-3 cursor-pointer hover:bg-gray-50 transition flex items-center gap-3 text-left"
                                     >
                                         {/* Blog Image */}
                                         {blog.featuredImage.url ? (
